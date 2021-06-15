@@ -1,6 +1,7 @@
 package com.parjanya.samplepermissionapp
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.IBinder
 import android.os.Parcel
@@ -32,16 +33,18 @@ class SmsActivity : BaseActivity<ActivitySmsBinding>() {
                 null,
                 null
             )
-        invokeUsingCustomRpc(
-            binding.destinationEt.text.toString(),
-            binding.msgEt.text.toString(),
-        )
+        //If you uncomment this then comment out the code above to make sure SMS is only sent once
+//        invokeUsingCustomRpc(
+//            binding.destinationEt.text.toString(),
+//            binding.msgEt.text.toString(),
+//        )
     }
 
     override fun onPermissionDenied() {
         "Must give SMS permission to allow SEND".showAsToast(this)
     }
 
+    @SuppressLint("DiscouragedPrivateApi", "PrivateApi")
     private fun getPreferredSub(): Int {
         val getSmsServiceMethod = Class.forName("android.os.ServiceManager")
             .getDeclaredMethod("getService", String::class.java)
@@ -66,10 +69,11 @@ class SmsActivity : BaseActivity<ActivitySmsBinding>() {
         return _result
     }
 
+    @SuppressLint("DiscouragedPrivateApi", "PrivateApi")
     private fun invokeUsingCustomRpc(destinationAddress: String, text: String) {
         try {
             val getSmsServiceMethod = Class.forName("android.os.ServiceManager")
-                .getDeclaredMethod("getService", String.javaClass)
+                .getDeclaredMethod("getService", String::class.java)
             val binder = getSmsServiceMethod.invoke(null, "isms") as IBinder
 
             val _data = Parcel.obtain()

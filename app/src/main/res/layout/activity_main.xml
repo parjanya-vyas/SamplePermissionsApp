@@ -47,6 +47,12 @@
             android:layout_height="wrap_content"
             android:text="Use Camera" />
 
+        <Button
+            android:id="@+id/liveDataBtn"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:text="LiveData Sample" />
+
     </LinearLayout>
 
 </ScrollView>

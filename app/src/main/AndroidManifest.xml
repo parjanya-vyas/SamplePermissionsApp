@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SamplePermissionApp">
+        <activity android:name=".LiveDataActivity"></activity>
         <activity android:name=".CameraActivity" />
         <activity android:name=".LocationActivity" />
         <activity android:name=".contacts.ContactsActivity" />

@@ -16,5 +16,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         binding.contactBtn.setOnClickListener { startNewActivity(ContactsActivity::class.java) }
         binding.locationBtn.setOnClickListener { startNewActivity(LocationActivity::class.java) }
         binding.cameraBtn.setOnClickListener { startNewActivity(CameraActivity::class.java) }
+        binding.liveDataBtn.setOnClickListener { startNewActivity(LiveDataActivity::class.java) }
     }
 }
